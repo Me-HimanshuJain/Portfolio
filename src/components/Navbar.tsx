@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
 
         {/* Nav Links */}
         <div style={{ display: 'flex', gap: '2.5rem' }}>
-          {['Home', 'About', 'Projects', 'Services', 'Contact'].map((item) => (
+          {['Home', 'About', 'Projects', 'Contact'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}
               style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem', letterSpacing: '0.02em', transition: 'color 0.2s', textDecoration: 'none' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.95)')}
