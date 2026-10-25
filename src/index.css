@@ -1,0 +1,311 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---- Skill Icon with Tooltip ---- */
+.skill-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.skill-icon-wrap .skill-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.85rem;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-icon-wrap:hover .skill-icon {
+  transform: translateY(-8px) scale(1.18);
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px rgba(6, 182, 212, 0.25);
+  background: rgba(255,255,255,0.08);
+}
+
+.skill-icon-wrap .skill-tooltip {
+  position: absolute;
+  top: -2.4rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #ffffff;
+  color: #0a0a0a;
+  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.skill-icon-wrap .skill-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.skill-icon-wrap:hover .skill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Radial gradient from dark-center charcoal to near-black edges — matches the reference image */
+  background: radial-gradient(ellipse at center, #2a2a2a 0%, #1a1a1a 40%, #111111 100%);
+  background-attachment: fixed;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Section title */
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.section-underline {
+  width: 2.5rem;
+  height: 2px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+}
+
+/* Scrolling marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 25s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Primary button — filled white */
+.btn-amber {
+  background: #ffffff;
+  color: #111111;
+  font-weight: 600;
+  padding: 0.7rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.btn-amber:hover {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
+
+/* Secondary button — outlined */
+.btn-outline {
+  background: transparent;
+  color: #e5e7eb;
+  font-weight: 500;
+  padding: 0.7rem 1.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.7);
+  color: #ffffff;
+  background: rgba(255,255,255,0.05);
+}
+
+/* Project card */
+.project-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid rgba(255,255,255,0.35);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+  border-left-color: rgba(255,255,255,0.7);
+  box-shadow: 0 8px 40px rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Service card */
+.service-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 0 30px rgba(255,255,255,0.04);
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Input styles */
+.form-input {
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: rgba(255,255,255,0.5);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+}
+
+.form-input::placeholder {
+  color: #4b5563;
+}
+
+/* Background orbs (keep for contact section) */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+}
+
+/* Neon scroll pulse */
+@keyframes neon-line-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px #00fff7, 0 0 18px #00fff7; }
+  50%       { opacity: 0.2; box-shadow: none; }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, #00fff7);
+  animation: neon-line-blink 1.2s ease-in-out infinite;
+}
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px #00fff7, 0 0 20px #00fff7; }
+  50%       { opacity: 0.4; box-shadow: 0 0 4px #00fff7, 0 0 8px #00fff7; }
+}
+
+@keyframes scroll-line {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, transparent, #00fff7);
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+.scroll-text {
+  animation: neon-pulse 1.8s ease-in-out infinite;
+}
+
+/* Hero fade-in stagger */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag   { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
+.hero-h1    { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
+.hero-sub   { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
+.hero-btns  { animation: fadeUp 0.6s ease both; animation-delay: 0.55s; }
+.hero-stats { animation: fadeUp 0.6s ease both; animation-delay: 0.7s; }
+.hero-img   { animation: fadeUp 0.8s ease both; animation-delay: 0.3s; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 999px; }
+
+/* Terminal custom scrollbar */
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.4);
+  border-radius: 4px;
+}
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.8);
+}
+
+/* Link reset */
+a { text-decoration: none; color: inherit; }
