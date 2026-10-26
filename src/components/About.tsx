@@ -24,7 +24,7 @@ const About: React.FC = () => {
             border: '1px solid rgba(255,255,255,0.12)',
             boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
           }}>
-            <img src="/portfolio_img.png" alt="Himanshu Jain" style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+            <img src={`${import.meta.env.BASE_URL}portfolio_img.png`} alt="Himanshu Jain" style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
           </div>
           {/* Corner accent — white */}
           <div style={{ position: 'absolute', bottom: '-12px', right: '-12px', width: '5rem', height: '5rem', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '0.5rem', zIndex: -1 }}></div>

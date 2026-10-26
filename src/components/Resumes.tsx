@@ -4,7 +4,7 @@ import { FileText, Eye, Download } from 'lucide-react';
 
 export default function Resumes() {
   const [modalOpen, setModalOpen] = useState(false);
-  const pdfUrl = '/resume.pdf';
+  const pdfUrl = `${import.meta.env.BASE_URL}resume.pdf`;
   const title = "Himanshu Jain - Resume";
 
   return (

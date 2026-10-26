@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
         <div className="hero-img relative flex-shrink-0 my-4 lg:my-0">
           <div className="w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] rounded-full border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.08)] flex items-center justify-center p-1 bg-white/[0.02]">
             <div className="w-full h-full rounded-full overflow-hidden">
-              <img src="/portfolio_img.png" alt="Himanshu Jain" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+              <img src={`${import.meta.env.BASE_URL}portfolio_img.png`} alt="Himanshu Jain" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
             </div>
           </div>
 

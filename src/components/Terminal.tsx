@@ -106,7 +106,7 @@ export default function Terminal() {
       output = (
         <div className="text-sm flex items-center gap-3">
           <a
-            href="/resume.pdf"
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
             download="Himanshu_Jain_Resume.pdf"
             target="_blank"
             rel="noreferrer"
@@ -116,7 +116,7 @@ export default function Terminal() {
           </a>
           <span className="text-gray-500">|</span>
           <a
-            href="/resume.pdf"
+            href={`${import.meta.env.BASE_URL}resume.pdf`}
             target="_blank"
             rel="noreferrer"
             className="text-gray-300 hover:text-white underline transition-colors"
