@@ -31,11 +31,16 @@ const Projects: React.FC = () => {
               <h2 className="section-title">Featured Projects</h2>
               <div className="section-underline"></div>
             </div>
-            <div className="font-mono text-xs text-cyan-400 bg-cyan-950/30 border border-cyan-500/20 px-3.5 py-1.5 rounded-full mb-6 self-start sm:self-auto">
+            {/* Badge — desktop only (right side of header row) */}
+            <div className="hidden sm:flex font-mono text-xs text-cyan-400 bg-cyan-950/30 border border-cyan-500/20 px-3.5 py-1.5 rounded-full mb-6 self-auto items-center">
               Showing {filteredProjects.length} of {projects.length} systems
             </div>
           </div>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '1rem', marginTop: '-1.5rem', marginBottom: '2rem' }}>
+          {/* Badge — mobile only (below heading, above paragraph) */}
+          <div className="sm:hidden inline-block font-mono text-xs text-cyan-400 bg-cyan-950/30 border border-cyan-500/20 px-3.5 py-1.5 rounded-full mt-2 mb-3">
+            Showing {filteredProjects.length} of {projects.length} systems
+          </div>
+          <p className="sm:-mt-6" style={{ color: 'rgba(255,255,255,0.55)', fontSize: '1rem', marginBottom: '2rem' }}>
             Engineered systems, autonomous AI applications, and full-stack platforms built from the ground up.
           </p>
 

@@ -6,16 +6,17 @@ const Hero: React.FC = () => {
     <section id="home" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', paddingTop: '5rem' }}>
 
       {/* Big background ghost text */}
-      <div style={{
+      <div className="whitespace-normal sm:whitespace-nowrap" style={{
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         fontSize: 'clamp(5rem, 16vw, 13rem)',
         fontWeight: 900, letterSpacing: '-0.04em',
         color: 'rgba(255,255,255,0.05)',
-        userSelect: 'none', whiteSpace: 'nowrap',
+        userSelect: 'none',
         pointerEvents: 'none', zIndex: 0,
         fontFamily: 'Inter, sans-serif',
-      }}>Hi! I'm Himanshu</div>
+        textAlign: 'center',
+      }}>Hi! I'm<br className="sm:hidden" /> Himanshu</div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16 max-w-[1200px] w-full px-6 lg:px-8">
@@ -51,7 +52,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Right: Avatar */}
-        <div className="hero-img relative flex-shrink-0 my-4 lg:my-0">
+        <div className="hero-img relative flex-shrink-0 -mt-8 mb-2 lg:my-0">
           <div className="w-[240px] h-[240px] sm:w-[290px] sm:h-[290px] rounded-full border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.08)] flex items-center justify-center p-1 bg-white/[0.02]">
             <div className="w-full h-full rounded-full overflow-hidden">
               <img src={`${import.meta.env.BASE_URL}portfolio_img.png`} alt="Himanshu Jain" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
@@ -75,7 +76,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll indicator — static neon glow on characters */}
-      <div style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="absolute bottom-2 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <div className="scroll-line"></div>
         <div style={{ fontSize: '0.6rem', fontFamily: 'monospace', color: '#00fff7', letterSpacing: '0.15em', textShadow: '0 0 6px #00fff7, 0 0 14px #00fff7' }}>SCROLL</div>
       </div>
