@@ -277,7 +277,17 @@ export const projects: ProjectItem[] = [
   }
 ];
 
-export const experience = [
+export interface ExperienceItem {
+  id: number;
+  role: string;
+  company: string;
+  duration: string;
+  location?: string;
+  technologies: string[];
+  description: string[];
+}
+
+export const experience: ExperienceItem[] = [
   {
     id: 1,
     role: "AI/ML Intern",

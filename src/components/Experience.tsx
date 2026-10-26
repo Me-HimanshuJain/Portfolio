@@ -49,12 +49,12 @@ export default function Experience() {
               </ul>
 
               {/* Technologies Learnt */}
-              {'technologies' in exp && Array.isArray((exp as any).technologies) && (
+              {exp.technologies && exp.technologies.length > 0 && (
                 <div className="mt-6 pt-5 border-t border-white/[0.07] flex flex-wrap items-center gap-2">
                   <span className="text-xs font-mono text-gray-400 uppercase tracking-wider mr-1">
                     Technologies Learnt:
                   </span>
-                  {(exp as any).technologies.map((tech: string, tIdx: number) => (
+                  {exp.technologies.map((tech, tIdx) => (
                     <span 
                       key={tIdx} 
                       className="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 group-hover:border-cyan-500/40 transition-colors"

@@ -1,9 +1,17 @@
 import React from 'react';
 import { projects } from '../data/mockData';
-import { useRole } from '../context/RoleContext';
+import { useRole, type Role } from '../context/RoleContext';
 
 const Projects: React.FC = () => {
-  const { currentRole } = useRole();
+  const { currentRole, setCurrentRole } = useRole();
+
+  const roles: { id: Role; label: string }[] = [
+    { id: 'all', label: 'All Disciplines' },
+    { id: 'ai-ml', label: 'AI & Machine Learning' },
+    { id: 'genai', label: 'Generative AI & LLMs' },
+    { id: 'data-science', label: 'Data Science & Analytics' },
+    { id: 'sde-webd', label: 'SDE & Web Dev' }
+  ];
 
   const filteredProjects = currentRole === 'all' 
     ? projects 
@@ -23,15 +31,30 @@ const Projects: React.FC = () => {
               <h2 className="section-title">Featured Projects</h2>
               <div className="section-underline"></div>
             </div>
-            {currentRole !== 'all' && (
-              <div className="font-mono text-xs text-cyan-400 bg-cyan-950/30 border border-cyan-500/20 px-3 py-1.5 rounded-full mb-6 self-start sm:self-auto">
-                Showing {filteredProjects.length} of {projects.length} systems
-              </div>
-            )}
+            <div className="font-mono text-xs text-cyan-400 bg-cyan-950/30 border border-cyan-500/20 px-3.5 py-1.5 rounded-full mb-6 self-start sm:self-auto">
+              Showing {filteredProjects.length} of {projects.length} systems
+            </div>
           </div>
           <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '1rem', marginTop: '-1.5rem', marginBottom: '2rem' }}>
             Engineered systems, autonomous AI applications, and full-stack platforms built from the ground up.
           </p>
+
+          {/* Interactive Role Filtering Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none flex-wrap">
+            {roles.map((role) => (
+              <button
+                key={role.id}
+                onClick={() => setCurrentRole(role.id)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  currentRole === role.id 
+                    ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' 
+                    : 'bg-white/[0.03] text-gray-400 border border-white/10 hover:bg-white/[0.07] hover:text-white'
+                }`}
+              >
+                {role.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Single Column Stack of Cards matching reference */}
@@ -39,7 +62,7 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-[#08080a] border border-white/10 rounded-2xl p-8 sm:p-10 md:p-12 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_12px_40px_rgba(6,182,212,0.09)] relative group"
+              className="bg-[#08080a] border border-white/10 rounded-2xl p-6 sm:p-10 md:p-12 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-[0_12px_40px_rgba(6,182,212,0.09)] relative group"
             >
               {/* Top Meta Row */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">

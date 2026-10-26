@@ -26,8 +26,8 @@ export default function Terminal() {
         <div className="space-y-1.5 text-sm">
           <div className="text-gray-300 font-semibold mb-2">Available Directives:</div>
           <div>
-            <span className="text-cyan-400 font-semibold">resume</span>
-            <span className="text-gray-400"> - Open PDF résumé</span>
+            <span className="text-cyan-400 font-semibold">about</span>
+            <span className="text-gray-400"> - Bio and background overview</span>
           </div>
           <div>
             <span className="text-cyan-400 font-semibold">projects</span>
@@ -38,26 +38,90 @@ export default function Terminal() {
             <span className="text-gray-400"> - Show core technical arsenal</span>
           </div>
           <div>
+            <span className="text-cyan-400 font-semibold">experience</span>
+            <span className="text-gray-400"> - Show professional internships</span>
+          </div>
+          <div>
+            <span className="text-cyan-400 font-semibold">honours</span>
+            <span className="text-gray-400"> - Competitions and verified credentials</span>
+          </div>
+          <div>
+            <span className="text-cyan-400 font-semibold">resume</span>
+            <span className="text-gray-400"> - Access PDF résumé</span>
+          </div>
+          <div>
             <span className="text-cyan-400 font-semibold">contact</span>
             <span className="text-gray-400"> - Display verified contact channels</span>
           </div>
           <div>
-            <span className="text-cyan-400 font-semibold">clean</span>
-            <span className="text-gray-400"> - Clean terminal window</span>
+            <span className="text-cyan-400 font-semibold">clear</span>
+            <span className="text-gray-400"> - Clear terminal window</span>
+          </div>
+        </div>
+      );
+    } else if (mainCmd === 'about') {
+      output = (
+        <div className="text-sm text-gray-300 leading-relaxed space-y-1">
+          <div><span className="text-cyan-400 font-semibold">Himanshu Jain</span> – Final-Year Computer Science Engineering student passionate about Full-Stack Development, AI, Machine Learning, and DevOps.</div>
+          <div className="text-gray-400">Based in Jaipur, Rajasthan, India. Building scalable, AI-powered applications that solve real-world problems.</div>
+        </div>
+      );
+    } else if (mainCmd === 'experience') {
+      output = (
+        <div className="space-y-2 text-sm">
+          <div className="text-gray-300 font-semibold mb-1">Professional Experience:</div>
+          <div className="space-y-1.5">
+            <div>
+              <span className="text-cyan-400 font-mono">[01] </span>
+              <span className="text-white font-medium">Smarted</span>
+              <span className="text-gray-400"> – AI/ML Intern (Dec 2025 - Feb 2026)</span>
+            </div>
+            <div>
+              <span className="text-cyan-400 font-mono">[02] </span>
+              <span className="text-white font-medium">Scrum Digitals Pvt. Ltd</span>
+              <span className="text-gray-400"> – Full-Stack Development Intern (Jun 2025 - Jul 2025)</span>
+            </div>
+            <div>
+              <span className="text-cyan-400 font-mono">[03] </span>
+              <span className="text-white font-medium">Kistechnosoftware Pvt. Ltd.</span>
+              <span className="text-gray-400"> – Full-Stack &amp; DB Intern (Jun 2024)</span>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (mainCmd === 'honours' || mainCmd === 'certifications') {
+      output = (
+        <div className="space-y-2 text-sm">
+          <div className="text-gray-300 font-semibold mb-1">Key Honours &amp; Credentials:</div>
+          <div className="text-gray-300 space-y-1">
+            <div>• <span className="text-cyan-400 font-medium">Top 8 Teams</span> – InnoViction 2025</div>
+            <div>• <span className="text-cyan-400 font-medium">Top 16 Teams</span> – IdeaThon 2026</div>
+            <div>• <span className="text-cyan-400 font-medium">Top 30 Teams</span> – HackArya Verse 2.0</div>
+            <div>• <span className="text-cyan-400 font-medium">Team Lead</span> – Smart India Hackathon 2025</div>
+            <div>• <span className="text-gray-400">Certifications from Anthropic, Google Cloud, IBM, Microsoft, NVIDIA, and CISCO.</span></div>
           </div>
         </div>
       );
     } else if (mainCmd === 'resume') {
       output = (
-        <div className="text-sm">
+        <div className="text-sm flex items-center gap-3">
           <a
-            href="/Resumee_Himanshu.pdf"
-            download="Resumee_Himanshu.pdf"
+            href="/resume.pdf"
+            download="Himanshu_Jain_Resume.pdf"
             target="_blank"
             rel="noreferrer"
             className="text-cyan-400 underline decoration-cyan-400/40 hover:decoration-cyan-400 font-medium transition-colors"
           >
-            Resumee_Himanshu.pdf
+            Download Himanshu_Jain_Resume.pdf
+          </a>
+          <span className="text-gray-500">|</span>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="text-gray-300 hover:text-white underline transition-colors"
+          >
+            Open in new tab
           </a>
         </div>
       );
@@ -227,7 +291,7 @@ export default function Terminal() {
 
   return (
     <section id="contact" style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-start">
         
         {/* Left Column: Contact details */}
         <div>

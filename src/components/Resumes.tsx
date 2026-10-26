@@ -4,7 +4,7 @@ import { FileText, Eye, Download } from 'lucide-react';
 
 export default function Resumes() {
   const [modalOpen, setModalOpen] = useState(false);
-  const pdfUrl = '/Resumee_Himanshu.pdf';
+  const pdfUrl = '/resume.pdf';
   const title = "Himanshu Jain - Resume";
 
   return (
@@ -57,7 +57,7 @@ export default function Resumes() {
           </button>
           <a 
             href={pdfUrl} 
-            download 
+            download="Himanshu_Jain_Resume.pdf" 
             className="btn-amber"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >

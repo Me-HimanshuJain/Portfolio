@@ -13,7 +13,7 @@ export default function Skills() {
       {/* Tech Stack Marquee */}
       <div style={{ overflow: 'hidden', whiteSpace: 'nowrap', marginTop: '0.5rem', padding: '3.25rem 0 1.5rem 0' }}>
         <div className="marquee-track" style={{ gap: '4rem' }}>
-          {[1, 2, 3].map((group) => (
+          {[1, 2].map((group) => (
             <div key={group} style={{ display: 'flex', gap: '4rem', alignItems: 'center' }}>
               {[
                 { icon: 'devicon-python-plain', name: 'Python' },

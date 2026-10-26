@@ -14,17 +14,17 @@ const About: React.FC = () => {
       </div>
 
       {/* Two-column layout */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '4rem', alignItems: 'center', marginBottom: '0' }}>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10 md:gap-16 items-center mb-0">
 
         {/* Left: Image */}
-        <div style={{ position: 'relative' }}>
+        <div className="relative max-w-[320px] sm:max-w-[360px] mx-auto md:mx-0 w-full">
           <div style={{
-            width: '100%', maxWidth: '360px',
+            width: '100%',
             borderRadius: '1rem', overflow: 'hidden',
             border: '1px solid rgba(255,255,255,0.12)',
             boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
           }}>
-            <img src="/avatar.jpg" alt="Himanshu Jain" style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+            <img src="/portfolio_img.png" alt="Himanshu Jain" style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
           </div>
           {/* Corner accent — white */}
           <div style={{ position: 'absolute', bottom: '-12px', right: '-12px', width: '5rem', height: '5rem', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '0.5rem', zIndex: -1 }}></div>
@@ -37,11 +37,11 @@ const About: React.FC = () => {
           </p>
 
           {/* Stats */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
             {[
               { number: stats.projects, label: 'Projects Built' },
               { number: stats.technologies, label: 'Technologies Used' },
-              { number: stats.yearsLearning, label: 'Year of Learning' },
+              { number: stats.yearsLearning, label: 'Years of Learning' },
               { number: stats.domains, label: 'Domains Explored' },
             ].map(({ number, label }) => (
               <div key={label} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0.5rem', padding: '1rem 1.25rem' }}>
@@ -51,7 +51,7 @@ const About: React.FC = () => {
             ))}
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href={personalInfo.socials.github} target="_blank" rel="noreferrer" className="btn-amber">GitHub Profile</a>
             <a href={personalInfo.socials.linkedin} target="_blank" rel="noreferrer" className="btn-outline">LinkedIn</a>
           </div>

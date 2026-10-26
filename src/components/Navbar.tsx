@@ -19,6 +19,7 @@ const InstagramIcon = () => (
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -26,45 +27,112 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const navLinks = [
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Resume', href: '#resume' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Honours', href: '#honours' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
   return (
     <nav style={{
       position: 'fixed', top: 0, width: '100%', zIndex: 100,
-      background: scrolled ? 'rgba(20,20,20,0.92)' : 'rgba(20,20,20,0.5)',
+      background: scrolled ? 'rgba(15,15,18,0.95)' : 'rgba(15,15,18,0.7)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(255,255,255,0.06)',
+      borderBottom: '1px solid rgba(255,255,255,0.08)',
       transition: 'background 0.3s ease',
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1.1rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        {/* Logo removed */}
-        <div></div>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* Brand Logo */}
+        <a href="#home" className="flex items-center gap-1 group text-decoration-none">
+          <span className="font-mono text-xl font-extrabold text-white tracking-tight">HJ</span>
+          <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)] group-hover:scale-125 transition-transform" />
+        </a>
 
-        {/* Nav Links */}
-        <div style={{ display: 'flex', gap: '2.5rem' }}>
-          {['Home', 'About', 'Projects', 'Contact'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`}
-              style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem', letterSpacing: '0.02em', transition: 'color 0.2s', textDecoration: 'none' }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.95)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
-            >{item}</a>
+        {/* Desktop Nav Links */}
+        <div className="hidden lg:flex items-center gap-7">
+          {navLinks.map((item) => (
+            <a key={item.label} href={item.href}
+              style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', letterSpacing: '0.02em', transition: 'color 0.2s', textDecoration: 'none' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#22d3ee')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
+            >{item.label}</a>
           ))}
         </div>
 
-        {/* Social Icons */}
+        {/* Social Icons & Mobile Toggle */}
         <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center' }}>
-          {[
-            { href: personalInfo.socials.github, icon: <GithubIcon /> },
-            { href: personalInfo.socials.instagram, icon: <InstagramIcon /> },
-            { href: personalInfo.socials.linkedin, icon: <LinkedinIcon /> },
-          ].map(({ href, icon }, i) => (
-            <a key={i} href={href} target="_blank" rel="noreferrer"
-              style={{ color: 'rgba(255,255,255,0.45)', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.9)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
-              {icon}
-            </a>
-          ))}
+          <div className="hidden sm:flex items-center gap-4">
+            {[
+              { href: personalInfo.socials.github, icon: <GithubIcon />, title: "GitHub" },
+              { href: personalInfo.socials.instagram, icon: <InstagramIcon />, title: "Instagram" },
+              { href: personalInfo.socials.linkedin, icon: <LinkedinIcon />, title: "LinkedIn" },
+            ].map(({ href, icon, title }, i) => (
+              <a key={i} href={href} target="_blank" rel="noreferrer" title={title}
+                style={{ color: 'rgba(255,255,255,0.45)', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.95)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}>
+                {icon}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors focus:outline-none"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {mobileMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </>
+              )}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-[#0d0d10]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
+          <div className="flex flex-col gap-4">
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-300 hover:text-cyan-400 text-sm font-medium tracking-wide py-1 transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="pt-4 mt-2 border-t border-white/10 flex items-center gap-5">
+              <a href={personalInfo.socials.github} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <GithubIcon />
+              </a>
+              <a href={personalInfo.socials.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <LinkedinIcon />
+              </a>
+              <a href={personalInfo.socials.instagram} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <InstagramIcon />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

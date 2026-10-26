@@ -33,8 +33,14 @@ function App() {
           <Honours />
           <Terminal />
         </main>
-        <footer className="py-8 text-center border-t border-white/5 text-white/20 text-xs font-mono">
-          Designed & built by Himanshu Jain © {new Date().getFullYear()}
+        <footer className="py-10 border-t border-white/5 text-white/40 text-xs font-mono">
+          <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>Designed &amp; built by Himanshu Jain © {new Date().getFullYear()}</div>
+            <a href="#home" className="hover:text-cyan-400 transition-colors flex items-center gap-1.5 group">
+              <span>Back to top</span>
+              <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>
+            </a>
+          </div>
         </footer>
       </div>
     </RoleProvider>
